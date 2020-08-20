@@ -12,7 +12,7 @@
     position: absolute; // 박스 크기가 엘리먼트 크기만큼만 맞춰짐 작아짐, height는 50rem으로 선언했으니 불변
     width: 100%;
     backface-visibility: hidden;
-    border-radius: 0.3rem;
+    border-radius: 1rem;
     overflow: hidden; // 내부의 이미지 코너가 부모의 라운드 코너를 넘어가는 것을 방지
     box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
 
@@ -22,12 +22,31 @@
 
     &--back {
       transform: rotateY(180deg);
+
       &--1 {
         // 자식(modifier|요소)만 이런 식으로 셀렉터 중첩
         background-image: linear-gradient(
           to right bottom,
           $color-secondary-light,
           $color-secondary-dark
+        );
+      }
+
+      &--2 {
+        // 자식(modifier|요소)만 이런 식으로 셀렉터 중첩
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+
+      &--3 {
+        // 자식(modifier|요소)만 이런 식으로 셀렉터 중첩
+        background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
         );
       }
     }
@@ -48,6 +67,8 @@
     background-blend-mode: screen;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem; // clip-path 사용 시 parent의 overflow 속성이 상송되지 않으므로 추가 설정이 필요 (근데 상속됨)
 
     &--1 {
       background-image: linear-gradient(
@@ -56,6 +77,24 @@
           $color-secondary-dark
         ),
         url("../img/nat-5.jpg");
+    }
+
+    &--2 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url("../img/nat-6.jpg");
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        ),
+        url("../img/nat-7.jpg");
     }
   }
 
@@ -83,6 +122,22 @@
         rgba($color-secondary-dark, 0.85)
       );
     }
+
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.85),
+        rgba($color-primary-dark, 0.85)
+      );
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-tertiary-light, 0.85),
+        rgba($color-tertiary-dark, 0.85)
+      );
+    }
   }
 
   &__details {
@@ -102,6 +157,30 @@
           border-bottom: 1px solid $color-grey-light-2;
         }
       }
+    }
+  }
+
+  // Back side styling
+  &__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+  }
+
+  &__price-box {
+    color: $color-white;
+    margin-bottom: 8rem;
+    &__only {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+    }
+
+    &__value {
+      font-size: 6rem;
+      font-weight: 100;
     }
   }
 }
