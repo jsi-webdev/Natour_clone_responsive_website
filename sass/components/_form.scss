@@ -1,2 +1,49 @@
 .form {
+  &__group:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  &__input {
+    font-size: 1.5rem;
+    font-family: inherit; // 요소는 상속을 받지만, input내 text는 요소가 아니므로 수동 설정 필요
+    color: inherit;
+    padding: 1.5rem 2rem; // hor에 좀더 길게하면 더 이쁨
+    border-radius: 0.2rem;
+    background-color: rgba($color-white, 0.1);
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 100%;
+    display: block;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      border-bottom: 3px solid $color-primary;
+    }
+
+    &:focus:invalid {
+      border-bottom: 3px solid $color-secondary-dark;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $color-grey-dark-2;
+    }
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+    transition: all 0.3s;
+  }
+
+  // adjecent sibling 뒤에 있어야만 사용가능
+  // &__input:placeholder-shown ~ &__label {           ~ 바로 뒤가 아닐 때
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
 }
