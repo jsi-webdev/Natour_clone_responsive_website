@@ -1,0 +1,82 @@
+.navigation {
+  &__checkbox {
+    display: none;
+  }
+  &__button {
+    background-color: $color-white;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    top: 6rem;
+    right: 6rem;
+    border-radius: 50%;
+    z-index: 2000;
+  }
+  &__background {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed; // scroll해도 위치가 고정되어 따라다님
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient(
+      $color-primary-light,
+      $color-primary-dark
+    );
+    z-index: 1000;
+
+    transform: scale(80);
+  }
+  &__nav {
+    height: 100vh;
+    width: 100%; // block 요소이므로 굳이 지정할 필요가 없음
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1500; // fixed 지정 후에 설정안하면 뒤에 가려서 안보임 1이상 해줘야 함
+  }
+  &__list {
+    // 아래 4줄은 mixin하기 좋음
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+  }
+  &__item {
+    margin: 1rem;
+  }
+  &__link {
+    &:link,
+    &:visited {
+      display: inline-block; // 이거 설정안하면 translateX가 적용안 됨
+      font-size: 3rem;
+      font-weight: 300;
+      padding: 1rem 2rem;
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      background-image: linear-gradient(
+        120deg,
+        transparent 0%,
+        transparent 50%,
+        $color-white 50%
+      );
+      background-size: 220%;
+      transition: all 0.4s;
+
+      span {
+        margin-right: 1rem;
+        display: inline-block;
+      }
+    }
+
+    &:hover,
+    &:active {
+      background-position: 100%; // 원점
+      color: $color-primary;
+      transform: translateX(1rem);
+    }
+  }
+}
