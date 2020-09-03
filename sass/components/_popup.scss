@@ -1,0 +1,57 @@
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba($color-black, 0.8);
+  z-index: 9999;
+
+  &__content {
+    @include absCenter;
+    width: 75%;
+    height: 50rem;
+    background-color: $color-white;
+    box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
+    border-radius: 0.3rem;
+    display: table; //float 대신 좌우 grid 나무는 것이 용이함
+    overflow: hidden; // image가 둥근 배경 넘어가는 것 숨김
+  }
+
+  &__left {
+    width: 33.333333333%;
+    // float: left; // grid 좌우로 나누는 고전적 방법
+    display: table-cell;
+  }
+
+  &__right {
+    width: 66.666666667%;
+    // float: right; // grid 좌우로 나누는 고전적 방법
+    display: table-cell;
+    vertical-align: middle;
+    padding: 3rem 5rem;
+  }
+
+  &__img {
+    display: block; //block으로 해야 다음 이미지가 줄바꿈
+    width: 100%;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem; // default : 1em = 1.4rem (em is same size as fontsize)
+    -moz-column-rule: 1px solid $color-grey-light-2;
+
+    column-count: 2;
+    column-gap: 4rem; // default : 1em = 1.4rem (em is same size as fontsize)
+    column-rule: 1px solid $color-grey-light-2;
+
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+}
