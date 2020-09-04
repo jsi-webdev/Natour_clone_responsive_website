@@ -6,6 +6,9 @@
   left: 0;
   background-color: rgba($color-black, 0.8);
   z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
 
   &__content {
     @include absCenter;
@@ -16,6 +19,8 @@
     border-radius: 0.3rem;
     display: table; //float 대신 좌우 grid 나무는 것이 용이함
     overflow: hidden; // image가 둥근 배경 넘어가는 것 숨김
+    transform: translate(-50%, -50%) scale(0.25); // 1 block 요소는 1 transform만 가질 수 있음 부득이 이전 transform을 또 적어줘야 함
+    transition: all 0.5s 0.2s;
   }
 
   &__left {
@@ -53,5 +58,35 @@
     -ms-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto;
+  }
+
+  //Open Statea
+  &:target {
+    // url이 popup으로 변경되었을 때
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:target &__content {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &__close {
+    &:link,
+    &:visited {
+      color: $color-grey-dark;
+      position: absolute; // 부보인 .popup__right가 position 지정이 안되어있어도 할아버지인 popup에 지정이 되어 있음 상송되므로 괜찮음
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 3rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+      line-height: 1; // 기호 등의 text는 padding처럼 기본 높이가 있어 줄일 필요가 있음
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
   }
 }
