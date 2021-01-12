@@ -7,6 +7,14 @@
   background-color: rgba($color-black, 0.8);
   z-index: 9999;
 
+  @supports (
+    (-webkit-backdrop-filter: blur(-1rem)) or (backdrop-filter: blur(-1rem))
+  ) {
+    -webkit-backdrop-filter: blur(-1rem);
+    backdrop-filter: blur(-1rem);
+    background-color: rgba($color-black, 0.3);
+  }
+
   opacity: 0;
   visibility: hidden;
   // display: none; 으로 하면 animation 적용 불가
