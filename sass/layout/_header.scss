@@ -21,6 +21,8 @@
       url(../img/hero.jpg);
   }
 
+
+
   @supports ((-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0))) {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
